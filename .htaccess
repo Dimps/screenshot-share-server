@@ -1,0 +1,6 @@
+Options -Indexes
+
+<Files "i.png">
+    Order Allow,Deny
+    Deny from all
+</Files>
