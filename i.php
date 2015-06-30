@@ -5,7 +5,7 @@ if (file_exists("i.png")) {
     $success = rename("i.png", $name);
     
     if ($success) {
-        echo "http://4.stefantsov.com/s/", $name;
+        echo "http://4.stefantsov.com/s/?", $name;
     } else {
         echo "couldn't rename";
     }
