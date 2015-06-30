@@ -5,8 +5,11 @@
     // Pattern for 2015.06.21_16.10.06_8wig4jqe.png
     $is_good_filename = preg_match("/^\d{4}\.\d{2}\.\d{2}_\d{2}\.\d{2}\.\d{2}\_[a-z0-9]{8}\.png$/", $img);
     $exists = $is_good_filename && file_exists($img);
-    if (!$exists) {
+    if ($exists) {
+        $title = $img . " by Dima Stefantsov";
+    } else {
         http_response_code(404);
+        $title = "404 Not Found";
     }
 
 ?>
@@ -15,13 +18,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php if ($exists) { ?>
-        <title><?php echo $img ?> by Dima Stefantsov</title>
-    <?php } else { ?>
-        <title>404 Not Found</title>
-    <?php } ?>
+    <title><?php echo $title ?></title>
     <link rel="stylesheet" href="index.css" type="text/css" />
     <link rel="shortcut icon" href="favicon.ico">
+
+    <meta property="og:title" content="<?php echo $title ?>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://4.stefantsov.com/s/?<?php echo $img ?>" />
+    <meta property="og:image" content="http://4.stefantsov.com/s/<?php echo $img ?>" />
 </head>
 <body>
     <?php if ($exists) { ?>
