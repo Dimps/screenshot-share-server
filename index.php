@@ -3,7 +3,7 @@
     $img = htmlspecialchars($_SERVER['QUERY_STRING']);
     
     // Pattern for 2015.06.21_16.10.06_8wig4jqe.png
-    $is_good_filename = preg_match("/^\d{4}\.\d{2}\.\d{2}_\d{2}\.\d{2}\.\d{2}\_[a-z0-9]{8}\.png$/", $img);
+    $is_good_filename = preg_match("/^\d{4}\.\d{2}\.\d{2}_\d{1,2}\.\d{2}\.\d{2}\_[a-z0-9]{8}\.png$/", $img);
     $exists = $is_good_filename && file_exists($img);
     if ($exists) {
         $title = $img . " by Dima Stefantsov";
